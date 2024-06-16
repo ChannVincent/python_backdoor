@@ -7,6 +7,9 @@
 # install Pillow
 # https://stackoverflow.com/questions/34594800/how-to-install-pillow-on-windows-using-pip
 
+# rename file backdoor_client.pyw
+# https://stackoverflow.com/questions/1689015/run-python-script-without-windows-console-appearing
+
 # install PyInstaller
 # pyinstaller --onefile backdoor_client.py
 
